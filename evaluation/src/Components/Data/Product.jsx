@@ -1,28 +1,20 @@
 import { useEffect, useState } from "react"
+import { useDispatch } from "react-redux";
 import axios from "axios"
 import ProductDisplay from "./ProductDisplay";
+import { addData, getData } from "./api";
 function Product(){
+    const dispatch = useDispatch();
     const [product,setProduct] = useState([])
     const [isLoading, setIsLoading] = useState(true);
-    const getData = ()=>{
-        const config ={
-            url: "https://masai-react-assignment.herokuapp.com/unittest",
-            method:"get"
-        }
-        return axios(config)
-    }
+   
     const handleAdd = (id,name,price)=>{
-        const payload = {
-            id,
-            name,
-            price
-        }
-        const con ={
-            url: `https://masai-react-assignment.herokuapp.com/test`,
-            method:"post",
-            data:payload
-        }
-        return axios(con)
+        const action = addData({
+            id:id,
+            price:price,
+            name:name
+        })
+        dispatch(action)
     }
     const handleDisplay = () =>{
         return getData()

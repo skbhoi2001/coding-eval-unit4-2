@@ -1,7 +1,9 @@
+import CartData from "../Components/Data/CartData"
+
 function CartItem(){
     return(
         <div>
-           {/* {alert("HEllo")} */}
+           <CartData/>
         </div>
     )
 }
